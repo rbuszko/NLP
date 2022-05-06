@@ -48,12 +48,6 @@ def word2vec(tokens):
         # When there is no token in tokens
         return np.zeros(100)
 
-# def word_to_vec(tokens):
-#     nlp = spacy.load("en_core_web_sm")
-#     x = [token.vector for token in nlp(" ".join(tokens))]
-#     # x = [token.vector_norm for token in nlp(" ".join(tokens))]
-#     return x
-
 if __name__ == '__main__':
     # To get results faster
     spacy.prefer_gpu()
@@ -109,7 +103,6 @@ if __name__ == '__main__':
     #################
 
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
-    # min_count must be 1, otherwise wont 
     model = gensim.models.Word2Vec(df['stemmer'], min_count=1)
     df['word_to_vec'] = df['stemmer'].apply(word2vec)
 
